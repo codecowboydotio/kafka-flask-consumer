@@ -15,20 +15,9 @@ def k_consumer():
       bitsin = (message.value["virtualServers"]["/Demo_Application/nonsecure/serviceMain"]["clientside.bitsIn"])
       bitsout = (message.value["virtualServers"]["/Demo_Application/nonsecure/serviceMain"]["clientside.bitsOut"])
       ccons = (message.value["virtualServers"]["/Demo_Application/nonsecure/serviceMain"]["clientside.curConns"])
-      timestamp = (message.value["telemetryServiceInfo"]["cycleStart"])
-      pool = (message.value["pools"])
-      return jsonify(foo,timestamp,pool,count)
+      print message
   except:
     print("There was an error")
 
 k_consumer()
-
-app = Flask(__name__)
-
-@app.route('/')
-def go():
-  return k_consumer()
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
 
